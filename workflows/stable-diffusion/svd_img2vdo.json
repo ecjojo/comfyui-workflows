@@ -1,0 +1,1526 @@
+{
+    "id": "b6a88301-eab6-4871-ab5a-7280b9ac93b8",
+    "extra": {
+        "ds": {
+            "scale": 1,
+            "offset": [
+                49.210825672254,
+                -987.0249914799965
+            ]
+        }
+    },
+    "links": [
+        [
+            7,
+            3,
+            0,
+            8,
+            0,
+            "LATENT"
+        ],
+        [
+            10,
+            8,
+            0,
+            10,
+            0,
+            "IMAGE"
+        ],
+        [
+            17,
+            12,
+            1,
+            3,
+            2,
+            "CONDITIONING"
+        ],
+        [
+            18,
+            12,
+            2,
+            3,
+            3,
+            "LATENT"
+        ],
+        [
+            23,
+            15,
+            0,
+            14,
+            0,
+            "MODEL"
+        ],
+        [
+            24,
+            15,
+            1,
+            12,
+            0,
+            "CLIP_VISION"
+        ],
+        [
+            25,
+            15,
+            2,
+            12,
+            2,
+            "VAE"
+        ],
+        [
+            26,
+            15,
+            2,
+            8,
+            1,
+            "VAE"
+        ],
+        [
+            39,
+            14,
+            0,
+            3,
+            0,
+            "MODEL"
+        ],
+        [
+            40,
+            12,
+            0,
+            3,
+            1,
+            "CONDITIONING"
+        ],
+        [
+            43,
+            25,
+            0,
+            24,
+            0,
+            "IMAGE"
+        ],
+        [
+            47,
+            29,
+            4,
+            12,
+            3,
+            "INT"
+        ],
+        [
+            48,
+            29,
+            5,
+            12,
+            4,
+            "INT"
+        ],
+        [
+            49,
+            30,
+            0,
+            12,
+            5,
+            "INT"
+        ],
+        [
+            50,
+            31,
+            0,
+            12,
+            6,
+            "INT"
+        ],
+        [
+            51,
+            32,
+            0,
+            12,
+            7,
+            "INT"
+        ],
+        [
+            52,
+            33,
+            0,
+            12,
+            8,
+            "FLOAT"
+        ],
+        [
+            55,
+            24,
+            0,
+            39,
+            0,
+            "IMAGE"
+        ],
+        [
+            56,
+            39,
+            0,
+            29,
+            0,
+            "IMAGE"
+        ],
+        [
+            57,
+            39,
+            0,
+            12,
+            1,
+            "IMAGE"
+        ],
+        [
+            58,
+            40,
+            0,
+            39,
+            1,
+            "INT"
+        ],
+        [
+            59,
+            41,
+            0,
+            33,
+            0,
+            "FLOAT"
+        ]
+    ],
+    "nodes": [
+        {
+            "id": 15,
+            "pos": [
+                925.2513427734375,
+                346.1731262207031
+            ],
+            "mode": 0,
+            "size": [
+                369.6000061035156,
+                98
+            ],
+            "type": "ImageOnlyCheckpointLoader",
+            "flags": {},
+            "order": 0,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "MODEL",
+                    "type": "MODEL",
+                    "links": [
+                        23
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                },
+                {
+                    "name": "CLIP_VISION",
+                    "type": "CLIP_VISION",
+                    "links": [
+                        24
+                    ],
+                    "shape": 3,
+                    "slot_index": 1
+                },
+                {
+                    "name": "VAE",
+                    "type": "VAE",
+                    "links": [
+                        25,
+                        26
+                    ],
+                    "shape": 3,
+                    "slot_index": 2
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ImageOnlyCheckpointLoader"
+            },
+            "widgets_values": [
+                "SVD/svd_xt.safetensors"
+            ]
+        },
+        {
+            "id": 14,
+            "pos": [
+                1475.67724609375,
+                363.80511474609375
+            ],
+            "mode": 0,
+            "size": [
+                315,
+                58
+            ],
+            "type": "VideoLinearCFGGuidance",
+            "flags": {},
+            "order": 7,
+            "inputs": [
+                {
+                    "link": 23,
+                    "name": "model",
+                    "type": "MODEL"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "MODEL",
+                    "type": "MODEL",
+                    "links": [
+                        39
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VideoLinearCFGGuidance"
+            },
+            "widgets_values": [
+                1
+            ]
+        },
+        {
+            "id": 8,
+            "pos": [
+                2191.517822265625,
+                371.00445556640625
+            ],
+            "mode": 0,
+            "size": [
+                210,
+                46
+            ],
+            "type": "VAEDecode",
+            "flags": {},
+            "order": 14,
+            "inputs": [
+                {
+                    "link": 7,
+                    "name": "samples",
+                    "type": "LATENT"
+                },
+                {
+                    "link": 26,
+                    "name": "vae",
+                    "type": "VAE"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        10
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "VAEDecode"
+            },
+            "widgets_values": []
+        },
+        {
+            "id": 30,
+            "pos": [
+                900,
+                740
+            ],
+            "mode": 0,
+            "size": [
+                401.8388977050781,
+                160
+            ],
+            "type": "ComfyUIDeployExternalNumberInt",
+            "flags": {},
+            "order": 1,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "value",
+                    "type": "INT",
+                    "links": [
+                        49
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ComfyUIDeployExternalNumberInt"
+            },
+            "widgets_values": [
+                "frames",
+                24,
+                "",
+                ""
+            ]
+        },
+        {
+            "id": 3,
+            "pos": [
+                1834.85107421875,
+                372.1155090332031
+            ],
+            "mode": 0,
+            "size": [
+                315,
+                474
+            ],
+            "type": "KSampler",
+            "flags": {},
+            "order": 13,
+            "inputs": [
+                {
+                    "link": 39,
+                    "name": "model",
+                    "type": "MODEL"
+                },
+                {
+                    "link": 40,
+                    "name": "positive",
+                    "type": "CONDITIONING"
+                },
+                {
+                    "link": 17,
+                    "name": "negative",
+                    "type": "CONDITIONING"
+                },
+                {
+                    "link": 18,
+                    "name": "latent_image",
+                    "type": "LATENT"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "LATENT",
+                    "type": "LATENT",
+                    "links": [
+                        7
+                    ],
+                    "slot_index": 0
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "KSampler"
+            },
+            "widgets_values": [
+                1104068775460919,
+                "randomize",
+                20,
+                2.5,
+                "euler",
+                "karras",
+                1
+            ]
+        },
+        {
+            "id": 29,
+            "pos": [
+                1477.081787109375,
+                123.04780578613281
+            ],
+            "mode": 0,
+            "size": [
+                252,
+                126
+            ],
+            "type": "Image Size to Number",
+            "flags": {},
+            "order": 11,
+            "inputs": [
+                {
+                    "link": 56,
+                    "name": "image",
+                    "type": "IMAGE"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "width_num",
+                    "type": "NUMBER",
+                    "links": null
+                },
+                {
+                    "name": "height_num",
+                    "type": "NUMBER",
+                    "links": null
+                },
+                {
+                    "name": "width_float",
+                    "type": "FLOAT",
+                    "links": null
+                },
+                {
+                    "name": "height_float",
+                    "type": "FLOAT",
+                    "links": null
+                },
+                {
+                    "name": "width_int",
+                    "type": "INT",
+                    "links": [
+                        47
+                    ]
+                },
+                {
+                    "name": "height_int",
+                    "type": "INT",
+                    "links": [
+                        48
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "Image Size to Number"
+            },
+            "widgets_values": []
+        },
+        {
+            "id": 12,
+            "pos": [
+                1472.6290283203125,
+                483.2265930175781
+            ],
+            "mode": 0,
+            "size": [
+                315,
+                218
+            ],
+            "type": "SVD_img2vid_Conditioning",
+            "flags": {},
+            "order": 12,
+            "inputs": [
+                {
+                    "link": 24,
+                    "name": "clip_vision",
+                    "type": "CLIP_VISION"
+                },
+                {
+                    "link": 57,
+                    "name": "init_image",
+                    "type": "IMAGE"
+                },
+                {
+                    "link": 25,
+                    "name": "vae",
+                    "type": "VAE"
+                },
+                {
+                    "link": 47,
+                    "name": "width",
+                    "type": "INT",
+                    "widget": {
+                        "name": "width"
+                    }
+                },
+                {
+                    "link": 48,
+                    "name": "height",
+                    "type": "INT",
+                    "widget": {
+                        "name": "height"
+                    }
+                },
+                {
+                    "link": 49,
+                    "name": "video_frames",
+                    "type": "INT",
+                    "widget": {
+                        "name": "video_frames"
+                    }
+                },
+                {
+                    "link": 50,
+                    "name": "fps",
+                    "type": "INT",
+                    "widget": {
+                        "name": "fps"
+                    }
+                },
+                {
+                    "link": 51,
+                    "name": "motion_bucket_id",
+                    "type": "INT",
+                    "widget": {
+                        "name": "motion_bucket_id"
+                    }
+                },
+                {
+                    "link": 52,
+                    "name": "augmentation_level",
+                    "type": "FLOAT",
+                    "widget": {
+                        "name": "augmentation_level"
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "positive",
+                    "type": "CONDITIONING",
+                    "links": [
+                        40
+                    ],
+                    "shape": 3,
+                    "slot_index": 0
+                },
+                {
+                    "name": "negative",
+                    "type": "CONDITIONING",
+                    "links": [
+                        17
+                    ],
+                    "shape": 3,
+                    "slot_index": 1
+                },
+                {
+                    "name": "latent",
+                    "type": "LATENT",
+                    "links": [
+                        18
+                    ],
+                    "shape": 3,
+                    "slot_index": 2
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "SVD_img2vid_Conditioning"
+            },
+            "widgets_values": [
+                1024,
+                576,
+                25,
+                127,
+                6,
+                0
+            ]
+        },
+        {
+            "id": 24,
+            "pos": [
+                911.37158203125,
+                515.6394653320312
+            ],
+            "mode": 0,
+            "size": [
+                390.5999755859375,
+                154
+            ],
+            "type": "ComfyUIDeployExternalImage",
+            "flags": {},
+            "order": 8,
+            "inputs": [
+                {
+                    "link": 43,
+                    "name": "default_value",
+                    "type": "IMAGE",
+                    "shape": 7
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "image",
+                    "type": "IMAGE",
+                    "links": [
+                        55
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ComfyUIDeployExternalImage"
+            },
+            "widgets_values": [
+                "input_image",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        {
+            "id": 31,
+            "pos": [
+                904.0845947265625,
+                947.5343017578125
+            ],
+            "mode": 0,
+            "size": [
+                404.7966003417969,
+                160
+            ],
+            "type": "ComfyUIDeployExternalNumberInt",
+            "flags": {},
+            "order": 2,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "value",
+                    "type": "INT",
+                    "links": [
+                        50
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ComfyUIDeployExternalNumberInt"
+            },
+            "widgets_values": [
+                "fps",
+                12,
+                "",
+                ""
+            ]
+        },
+        {
+            "id": 40,
+            "pos": [
+                466.473876953125,
+                170.01211547851562
+            ],
+            "mode": 0,
+            "size": [
+                404.7966003417969,
+                160
+            ],
+            "type": "ComfyUIDeployExternalNumberInt",
+            "flags": {},
+            "order": 3,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "value",
+                    "type": "INT",
+                    "links": [
+                        58
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ComfyUIDeployExternalNumberInt"
+            },
+            "widgets_values": [
+                "image_size",
+                512,
+                "",
+                ""
+            ]
+        },
+        {
+            "id": 25,
+            "pos": [
+                483.5071716308594,
+                513.9706420898438
+            ],
+            "mode": 0,
+            "size": [
+                315,
+                314
+            ],
+            "type": "LoadImage",
+            "flags": {},
+            "order": 4,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        43
+                    ]
+                },
+                {
+                    "name": "MASK",
+                    "type": "MASK",
+                    "links": null
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "LoadImage"
+            },
+            "widgets_values": [
+                "forest_nature_outdoors_path_trees_woods-1170198.jpg_d.webp",
+                "image",
+                ""
+            ]
+        },
+        {
+            "id": 10,
+            "pos": [
+                1536.4154052734375,
+                988.9447021484375
+            ],
+            "mode": 0,
+            "size": [
+                741.6685791015625,
+                564.5909423828125
+            ],
+            "type": "SaveAnimatedWEBP",
+            "flags": {},
+            "order": 15,
+            "inputs": [
+                {
+                    "link": 10,
+                    "name": "images",
+                    "type": "IMAGE"
+                }
+            ],
+            "outputs": [],
+            "properties": {
+                "Node name for S&R": "SaveAnimatedWEBP"
+            },
+            "widgets_values": [
+                "ComfyUI",
+                12.000000000000002,
+                false,
+                90,
+                "default"
+            ]
+        },
+        {
+            "id": 32,
+            "pos": [
+                903.6257934570312,
+                1182.629638671875
+            ],
+            "mode": 0,
+            "size": [
+                404.7966003417969,
+                160
+            ],
+            "type": "ComfyUIDeployExternalNumberInt",
+            "flags": {},
+            "order": 5,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "value",
+                    "type": "INT",
+                    "links": [
+                        51
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ComfyUIDeployExternalNumberInt"
+            },
+            "widgets_values": [
+                "motion_bucket_id",
+                80,
+                "",
+                ""
+            ]
+        },
+        {
+            "id": 39,
+            "pos": [
+                943.219482421875,
+                154.52069091796875
+            ],
+            "mode": 0,
+            "size": [
+                340.20001220703125,
+                82
+            ],
+            "type": "JWImageResizeByLongerSide",
+            "flags": {},
+            "order": 10,
+            "inputs": [
+                {
+                    "link": 55,
+                    "name": "image",
+                    "type": "IMAGE"
+                },
+                {
+                    "link": 58,
+                    "name": "size",
+                    "type": "INT",
+                    "widget": {
+                        "name": "size"
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "IMAGE",
+                    "type": "IMAGE",
+                    "links": [
+                        56,
+                        57
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "JWImageResizeByLongerSide"
+            },
+            "widgets_values": [
+                512,
+                "bicubic"
+            ]
+        },
+        {
+            "id": 33,
+            "pos": [
+                916.9594116210938,
+                1424.85205078125
+            ],
+            "mode": 0,
+            "size": [
+                403.1999816894531,
+                200
+            ],
+            "type": "ComfyUIDeployExternalNumber",
+            "flags": {},
+            "order": 9,
+            "inputs": [
+                {
+                    "link": 59,
+                    "name": "default_value",
+                    "type": "FLOAT",
+                    "shape": 7,
+                    "widget": {
+                        "name": "default_value"
+                    }
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "value",
+                    "type": "FLOAT",
+                    "links": [
+                        52
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "ComfyUIDeployExternalNumber"
+            },
+            "widgets_values": [
+                "augmentation_level",
+                0.010000000000000002,
+                "",
+                ""
+            ]
+        },
+        {
+            "id": 41,
+            "pos": [
+                425.6466064453125,
+                1472.0831298828125
+            ],
+            "mode": 0,
+            "size": [
+                315,
+                58
+            ],
+            "type": "JWFloat",
+            "flags": {},
+            "order": 6,
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "FLOAT",
+                    "type": "FLOAT",
+                    "links": [
+                        59
+                    ]
+                }
+            ],
+            "properties": {
+                "Node name for S&R": "JWFloat"
+            },
+            "widgets_values": [
+                0.1
+            ]
+        }
+    ],
+    "config": {},
+    "groups": [
+        {
+            "id": 1,
+            "color": "#8A8",
+            "flags": {},
+            "title": "Image to Video",
+            "bounding": [
+                1454,
+                293,
+                965.1112060546875,
+                608
+            ],
+            "font_size": 24
+        }
+    ],
+    "version": 0.4,
+    "revision": 0,
+    "last_link_id": 59,
+    "last_node_id": 41,
+    "workflow_api": {
+        "3": {
+            "_meta": {
+                "title": "K采样器"
+            },
+            "inputs": {
+                "cfg": 2.5,
+                "seed": 1104068775460919,
+                "model": [
+                    "14",
+                    0
+                ],
+                "steps": 20,
+                "denoise": 1,
+                "negative": [
+                    "12",
+                    1
+                ],
+                "positive": [
+                    "12",
+                    0
+                ],
+                "scheduler": "karras",
+                "latent_image": [
+                    "12",
+                    2
+                ],
+                "sampler_name": "euler"
+            },
+            "class_type": "KSampler"
+        },
+        "8": {
+            "_meta": {
+                "title": "VAE解码"
+            },
+            "inputs": {
+                "vae": [
+                    "15",
+                    2
+                ],
+                "samples": [
+                    "3",
+                    0
+                ]
+            },
+            "class_type": "VAEDecode"
+        },
+        "10": {
+            "_meta": {
+                "title": "保存动画（WEBP）"
+            },
+            "inputs": {
+                "fps": 12.000000000000002,
+                "images": [
+                    "8",
+                    0
+                ],
+                "method": "default",
+                "quality": 90,
+                "lossless": false,
+                "filename_prefix": "ComfyUI"
+            },
+            "class_type": "SaveAnimatedWEBP"
+        },
+        "12": {
+            "_meta": {
+                "title": "SVD_img2vid条件"
+            },
+            "inputs": {
+                "fps": [
+                    "31",
+                    0
+                ],
+                "vae": [
+                    "15",
+                    2
+                ],
+                "width": [
+                    "29",
+                    4
+                ],
+                "height": [
+                    "29",
+                    5
+                ],
+                "init_image": [
+                    "39",
+                    0
+                ],
+                "clip_vision": [
+                    "15",
+                    1
+                ],
+                "video_frames": [
+                    "30",
+                    0
+                ],
+                "motion_bucket_id": [
+                    "32",
+                    0
+                ],
+                "augmentation_level": [
+                    "33",
+                    0
+                ]
+            },
+            "class_type": "SVD_img2vid_Conditioning"
+        },
+        "14": {
+            "_meta": {
+                "title": "视频线性CFG引导"
+            },
+            "inputs": {
+                "model": [
+                    "15",
+                    0
+                ],
+                "min_cfg": 1
+            },
+            "class_type": "VideoLinearCFGGuidance"
+        },
+        "15": {
+            "_meta": {
+                "title": "Checkpoint加载器（仅图像）"
+            },
+            "inputs": {
+                "ckpt_name": "SVD/svd_xt.safetensors"
+            },
+            "class_type": "ImageOnlyCheckpointLoader"
+        },
+        "24": {
+            "_meta": {
+                "title": "External Image (ComfyUI Deploy)"
+            },
+            "inputs": {
+                "input_id": "input_image",
+                "description": "",
+                "display_name": "",
+                "default_value": [
+                    "25",
+                    0
+                ],
+                "default_value_url": ""
+            },
+            "class_type": "ComfyUIDeployExternalImage"
+        },
+        "25": {
+            "_meta": {
+                "title": "加载图像"
+            },
+            "inputs": {
+                "image": "forest_nature_outdoors_path_trees_woods-1170198.jpg_d.webp"
+            },
+            "class_type": "LoadImage"
+        },
+        "29": {
+            "_meta": {
+                "title": "Image Size to Number"
+            },
+            "inputs": {
+                "image": [
+                    "39",
+                    0
+                ]
+            },
+            "class_type": "Image Size to Number"
+        },
+        "30": {
+            "_meta": {
+                "title": "External Number Int (ComfyUI Deploy)"
+            },
+            "inputs": {
+                "input_id": "frames",
+                "description": "",
+                "display_name": "",
+                "default_value": 24
+            },
+            "class_type": "ComfyUIDeployExternalNumberInt"
+        },
+        "31": {
+            "_meta": {
+                "title": "External Number Int (ComfyUI Deploy)"
+            },
+            "inputs": {
+                "input_id": "fps",
+                "description": "",
+                "display_name": "",
+                "default_value": 12
+            },
+            "class_type": "ComfyUIDeployExternalNumberInt"
+        },
+        "32": {
+            "_meta": {
+                "title": "External Number Int (ComfyUI Deploy)"
+            },
+            "inputs": {
+                "input_id": "motion_bucket_id",
+                "description": "",
+                "display_name": "",
+                "default_value": 80
+            },
+            "class_type": "ComfyUIDeployExternalNumberInt"
+        },
+        "33": {
+            "_meta": {
+                "title": "External Number (ComfyUI Deploy)"
+            },
+            "inputs": {
+                "input_id": "augmentation_level",
+                "description": "",
+                "display_name": "",
+                "default_value": [
+                    "41",
+                    0
+                ]
+            },
+            "class_type": "ComfyUIDeployExternalNumber"
+        },
+        "39": {
+            "_meta": {
+                "title": "Image Resize by Longer Side"
+            },
+            "inputs": {
+                "size": [
+                    "40",
+                    0
+                ],
+                "image": [
+                    "24",
+                    0
+                ],
+                "interpolation_mode": "bicubic"
+            },
+            "class_type": "JWImageResizeByLongerSide"
+        },
+        "40": {
+            "_meta": {
+                "title": "External Number Int (ComfyUI Deploy)"
+            },
+            "inputs": {
+                "input_id": "image_size",
+                "description": "",
+                "display_name": "",
+                "default_value": 512
+            },
+            "class_type": "ComfyUIDeployExternalNumberInt"
+        },
+        "41": {
+            "_meta": {
+                "title": "Float"
+            },
+            "inputs": {
+                "value": 0.1
+            },
+            "class_type": "JWFloat"
+        }
+    },
+    "environment": {
+        "comfyui_version": "a14c2fc3565277dfe8ab0ecb22a86c1d0a1f72cf",
+        "gpu": "A10G",
+        "docker_command_steps": {
+            "steps": [
+                {
+                    "id": "7dbbcfc4-8",
+                    "data": {
+                        "url": "https://github.com/pythongosssss/ComfyUI-Custom-Scripts",
+                        "hash": "bbda5e52ad580c13ceaa53136d9c2bed9137bd2e",
+                        "meta": {
+                            "message": "bump",
+                            "committer": {
+                                "date": "2025-02-19T18:10:41.000Z",
+                                "name": "pythongosssss",
+                                "email": "125205205+pythongosssss@users.noreply.github.com"
+                            },
+                            "commit_url": "https://github.com/pythongosssss/ComfyUI-Custom-Scripts/commit/bbda5e52ad580c13ceaa53136d9c2bed9137bd2e",
+                            "latest_hash": "bbda5e52ad580c13ceaa53136d9c2bed9137bd2e",
+                            "stargazers_count": 2183
+                        },
+                        "name": "pythongosssss/ComfyUI-Custom-Scripts",
+                        "files": [
+                            "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "b3c98506-7",
+                    "data": {
+                        "url": "https://github.com/giriss/comfy-image-saver",
+                        "hash": "65e6903eff274a50f8b5cd768f0f96baf37baea1",
+                        "meta": {
+                            "message": "Allow folder name to have placeholders like image filename",
+                            "committer": {
+                                "date": "2023-08-20T13:32:29.000Z",
+                                "name": "Girish Gopaul",
+                                "email": "girish@gopaul.me"
+                            },
+                            "commit_url": "https://github.com/giriss/comfy-image-saver/commit/65e6903eff274a50f8b5cd768f0f96baf37baea1",
+                            "latest_hash": "65e6903eff274a50f8b5cd768f0f96baf37baea1",
+                            "stargazers_count": 233
+                        },
+                        "name": "Save Image with Generation Metadata",
+                        "files": [
+                            "https://github.com/giriss/comfy-image-saver"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "9d09e34e-0",
+                    "data": {
+                        "url": "https://github.com/ltdrdata/ComfyUI-Impact-Subpack",
+                        "hash": "74db20c95eca152a6d686c914edc0ef4e4762cb8",
+                        "meta": {
+                            "message": "update README.md",
+                            "committer": {
+                                "date": "2025-01-26T09:54:15.000Z",
+                                "name": "Dr.Lt.Data",
+                                "email": "dr.lt.data@gmail.com"
+                            },
+                            "commit_url": "https://github.com/ltdrdata/ComfyUI-Impact-Subpack/commit/74db20c95eca152a6d686c914edc0ef4e4762cb8",
+                            "latest_hash": "74db20c95eca152a6d686c914edc0ef4e4762cb8",
+                            "stargazers_count": 129
+                        },
+                        "name": "ComfyUI Impact Subpack",
+                        "files": [
+                            "https://github.com/ltdrdata/ComfyUI-Impact-Subpack"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "257ea7de-e",
+                    "data": {
+                        "url": "https://github.com/yolain/ComfyUI-Easy-Use",
+                        "hash": "0daf114fe8870aeacfea484aa59e7f9973b91cd5",
+                        "meta": {
+                            "message": "Add refine_foreground for ben2",
+                            "committer": {
+                                "date": "2025-02-24T06:41:22.000Z",
+                                "name": "yolain",
+                                "email": "yolain@163.com"
+                            },
+                            "commit_url": "https://github.com/yolain/ComfyUI-Easy-Use/commit/0daf114fe8870aeacfea484aa59e7f9973b91cd5",
+                            "latest_hash": "0daf114fe8870aeacfea484aa59e7f9973b91cd5",
+                            "stargazers_count": 1343
+                        },
+                        "name": "ComfyUI Easy Use",
+                        "files": [
+                            "https://github.com/yolain/ComfyUI-Easy-Use"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "86e2b8a0-4",
+                    "data": {
+                        "url": "https://github.com/ltdrdata/ComfyUI-Impact-Pack",
+                        "hash": "798776838e1cfd006717d2ddd18755faa0cf074e",
+                        "meta": {
+                            "message": "remove sample_error_enhancer",
+                            "committer": {
+                                "date": "2025-03-04T03:43:03.000Z",
+                                "name": "Dr.Lt.Data",
+                                "email": "dr.lt.data@gmail.com"
+                            },
+                            "commit_url": "https://github.com/ltdrdata/ComfyUI-Impact-Pack/commit/798776838e1cfd006717d2ddd18755faa0cf074e",
+                            "latest_hash": "798776838e1cfd006717d2ddd18755faa0cf074e",
+                            "stargazers_count": 2181
+                        },
+                        "name": "ComfyUI Impact Pack",
+                        "files": [
+                            "https://github.com/ltdrdata/ComfyUI-Impact-Pack"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "b5e1926e-2",
+                    "data": {
+                        "url": "https://github.com/pythongosssss/ComfyUI-WD14-Tagger",
+                        "hash": "d33501765c5bf3dca6e90e0ebaa962890999fbc5",
+                        "meta": {
+                            "message": "Merge branch 'main' of https://github.com/pythongosssss/ComfyUI-WD14-Tagger",
+                            "committer": {
+                                "date": "2024-10-23T19:52:57.000Z",
+                                "name": "pythongosssss",
+                                "email": "125205205+pythongosssss@users.noreply.github.com"
+                            },
+                            "commit_url": "https://github.com/pythongosssss/ComfyUI-WD14-Tagger/commit/d33501765c5bf3dca6e90e0ebaa962890999fbc5",
+                            "latest_hash": "d33501765c5bf3dca6e90e0ebaa962890999fbc5",
+                            "stargazers_count": 787
+                        },
+                        "name": "ComfyUI WD 1.4 Tagger",
+                        "files": [
+                            "https://github.com/pythongosssss/ComfyUI-WD14-Tagger"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "3cc71474-1",
+                    "data": {
+                        "url": "https://github.com/WASasquatch/was-node-suite-comfyui",
+                        "hash": "3ed45af34a14551dc28cb3127235cc7197d4633f",
+                        "meta": {
+                            "message": "Merge pull request #548 from Amorano/main\n\nUpdate WAS_Node_Suite.py",
+                            "committer": {
+                                "date": "2025-02-14T19:40:10.000Z",
+                                "name": "GitHub",
+                                "email": "noreply@github.com"
+                            },
+                            "commit_url": "https://github.com/WASasquatch/was-node-suite-comfyui/commit/3ed45af34a14551dc28cb3127235cc7197d4633f",
+                            "latest_hash": "3ed45af34a14551dc28cb3127235cc7197d4633f",
+                            "stargazers_count": 1388
+                        },
+                        "name": "WAS Node Suite",
+                        "files": [
+                            "https://github.com/WASasquatch/was-node-suite-comfyui"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "58d5843e-b",
+                    "data": {
+                        "url": "https://github.com/cubiq/ComfyUI_IPAdapter_plus",
+                        "hash": "9d076a3df0d2763cef5510ec5ab807f6632c39f5",
+                        "meta": {
+                            "message": "Merge pull request #793 from svenrog/main\n\nFix for issue with pipeline in load_models",
+                            "committer": {
+                                "date": "2025-02-26T06:31:16.000Z",
+                                "name": "GitHub",
+                                "email": "noreply@github.com"
+                            },
+                            "commit_url": "https://github.com/cubiq/ComfyUI_IPAdapter_plus/commit/9d076a3df0d2763cef5510ec5ab807f6632c39f5",
+                            "latest_hash": "9d076a3df0d2763cef5510ec5ab807f6632c39f5",
+                            "stargazers_count": 4715
+                        },
+                        "name": "ComfyUI_IPAdapter_plus",
+                        "files": [
+                            "https://github.com/cubiq/ComfyUI_IPAdapter_plus"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "f4f8bdcf-f",
+                    "data": {
+                        "url": "https://github.com/1038lab/ComfyUI-RMBG",
+                        "hash": "e96e69d218b3ab1ef4a04314ad6518f9360819c8",
+                        "meta": {
+                            "message": "Add files via upload",
+                            "committer": {
+                                "date": "2025-04-07T08:53:36.000Z",
+                                "name": "GitHub",
+                                "email": "noreply@github.com"
+                            },
+                            "latest_hash": "e96e69d218b3ab1ef4a04314ad6518f9360819c8"
+                        },
+                        "name": "ComfyUI-RMBG",
+                        "files": [
+                            "https://github.com/1038lab/ComfyUI-RMBG"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "comfyui-deploy",
+                    "data": {
+                        "url": "https://github.com/BennyKok/comfyui-deploy",
+                        "hash": "fe2d9b82b5180f71e17a56a543744ce5238b29b5",
+                        "name": "ComfyUI Deploy",
+                        "files": [
+                            "https://github.com/BennyKok/comfyui-deploy"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "367fb041-b",
+                    "data": {
+                        "url": "https://github.com/jamesWalker55/comfyui-various",
+                        "hash": "5bd85aaf7616878471469c4ec7e11bbd0cef3bf2",
+                        "meta": {
+                            "message": "New experimental sound module",
+                            "committer": {
+                                "date": "2025-02-27T11:01:47.000Z",
+                                "name": "James Walker",
+                                "email": "james.chunho@gmail.com"
+                            },
+                            "latest_hash": "5bd85aaf7616878471469c4ec7e11bbd0cef3bf2"
+                        },
+                        "name": "Various ComfyUI Nodes by Type",
+                        "files": [
+                            "https://github.com/jamesWalker55/comfyui-various"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "d0a72509-8",
+                    "data": {
+                        "url": "https://github.com/rgthree/rgthree-comfy",
+                        "hash": "b84f39c7c224de765de0b54c55b967329011819d",
+                        "meta": {
+                            "message": "Don't return menu options when splicing despite bad typing. Fixes #462",
+                            "committer": {
+                                "date": "2025-04-07T01:41:47.000Z",
+                                "name": "rgthree",
+                                "email": "regis.gaughan@gmail.com"
+                            },
+                            "latest_hash": "b84f39c7c224de765de0b54c55b967329011819d"
+                        },
+                        "name": "rgthree-comfy",
+                        "files": [
+                            "https://github.com/rgthree/rgthree-comfy"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                },
+                {
+                    "id": "67a28405-7",
+                    "data": {
+                        "url": "https://github.com/kijai/ComfyUI-KJNodes",
+                        "hash": "8ecf5cd05e0a1012087b0da90eea9a13674668db",
+                        "meta": {
+                            "message": "ReplaceImagesInBatch: allow replacing masks as well",
+                            "committer": {
+                                "date": "2025-04-13T13:52:23.000Z",
+                                "name": "kijai",
+                                "email": "40791699+kijai@users.noreply.github.com"
+                            },
+                            "latest_hash": "8ecf5cd05e0a1012087b0da90eea9a13674668db"
+                        },
+                        "name": "ComfyUI-KJNodes",
+                        "files": [
+                            "https://github.com/kijai/ComfyUI-KJNodes"
+                        ],
+                        "install_type": "git-clone"
+                    },
+                    "type": "custom-node"
+                }
+            ]
+        },
+        "max_containers": 2,
+        "install_custom_node_with_gpu": false,
+        "run_timeout": 300,
+        "scaledown_window": 60,
+        "extra_docker_commands": [],
+        "base_docker_image": null,
+        "python_version": null,
+        "extra_args": null,
+        "prestart_command": null,
+        "min_containers": 0,
+        "machine_hash": "48ec8dbb9a8afa65f58eb7190eed732e29715625f5e551d7349fd67ab03a453e",
+        "disable_metadata": true
+    }
+}

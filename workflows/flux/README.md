@@ -6,6 +6,7 @@
 ## PixelArtStyle Generator
 
 Text-to-Image with Pixel Art Style.
+https://app.comfydeploy.com/share/comfy-deploy/Uw3KgFEAChhEBjE6
 
 <img src="https://github.com/user-attachments/assets/01c06740-2c0b-4ef0-8eca-6cfa1ac216a1" width="256"/>
 
@@ -20,6 +21,7 @@ https://civitai.com/models/864595/pixel-art-portraits-flux
 ## GhibliStyle Generator
 
 Turn any image into Ghibli Style, Image-to-Image workflow.
+https://app.comfydeploy.com/share/comfy-deploy/P6lPETtqD4BZ2jXY
 
 <img src="https://github.com/user-attachments/assets/08ad722b-0979-4139-9a97-48ae076f65c2" width="256"/>
 
