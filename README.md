@@ -23,8 +23,8 @@ Workflows are organized by category:
 
 | Preview                                              | Category                      | Description                       |
 | ---------------------------------------------------- | ----------------------------- | --------------------------------- |
-| ![](<workflows\flux\GhibliStyleGenerator(flux).png>) | `flux/ghibli_img2img.json`    | Ghibli-style image transformation |
-| ![](<workflows\flux\PixelArtGenerator(flux).png>)    | `flux/pixelart_text2img.json` | Pixel art image from text prompt  |
+| ![](workflows/flux/GhibliStyleGenerator(flux).png) | `flux/ghibli_img2img.json`    | Ghibli-style image transformation |
+| ![](workflows/flux/PixelArtGenerator(flux).png)    | `flux/pixelart_text2img.json` | Pixel art image from text prompt  |
 
 ## Standardization
 
@@ -97,15 +97,16 @@ ComfyDeploy supports exposing parameters from a ComfyUI workflow as editable inp
 
 ### 🔧 Wan_img2vdo Workflow Template
 
-[🚀 Run it on ComfyDeploy](https://app.comfydeploy.com/share/comfy-deploy/5PZzf7jAg0XmJPPp)
-
 A video generation ComfyUI workflow using external parameter nodes, allowing users to adjust values like prompt, resolution, and frame count directly from the ComfyDeploy UI or via API.
 
 | Preview                            | Category               | Description                      |
 | ---------------------------------- | ---------------------- | -------------------------------- |
 | ![](workflows/wan/wan_img2vdo.gif) | `wan/wan_img2vid.json` | Pixel art image from text prompt |
 
-![UI Preview](./assets/Screenshot_01.png)
+![UI Preview](assets/Screenshot_01.png)
+
+[🚀 Run it on ComfyDeploy](https://app.comfydeploy.com/share/comfy-deploy/5PZzf7jAg0XmJPPp)
+
 
 | Type   | Field             | Description                                             |
 | ------ | ----------------- | ------------------------------------------------------- |
@@ -125,5 +126,6 @@ The following ComfyUI node types are used to define UI parameters:
 - **`ComfyUIDeployExternalText`** : string inputs such as prompts
 - **`ComfyUIDeployExternalNumber`** : numeric inputs (int/float)
 - **`ComfyUIDeployExternalBool`** : toggle switches (true/false)
+
 
 [🔗 ComfyUI Deploy Node Documentation](https://github.com/BennyKok/comfyui-deploy)
